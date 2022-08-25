@@ -9,11 +9,13 @@
   ],
   "compilerOptions": {
     "baseUrl": ".",
+    "allowJs": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
-
   "references": [
     {
       "path": "./tsconfig.config.json"
