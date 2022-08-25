@@ -6,6 +6,7 @@ import ManageScriptsCardVue from '@/components/cards/ManageScriptsCard.vue';
 import ManageGroupsCardVue from '@/components/cards/ManageGroupsCard.vue';
 import UsersCardVue from '@/components/cards/UsersCard.vue';
 import PostOfficeVue from '@/components/cards/PostOffice.vue';
+import TermContainerVue from '@/views/TermContainer.vue'
 
 </script>
 <template>
@@ -45,5 +46,6 @@ import PostOfficeVue from '@/components/cards/PostOffice.vue';
 
         </div>
     </div>
+    <TermContainerVue></TermContainerVue>
 </template>
 
