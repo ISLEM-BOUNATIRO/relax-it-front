@@ -41,7 +41,6 @@ declare module '@vue/runtime-core' {
     ScanEquipments: typeof import('./src/views/managments/ScanEquipments.vue')['default']
     SearchField: typeof import('./src/components/input/SearchField.vue')['default']
     SideNavBar: typeof import('./src/components/layouts/SideNavBar.vue')['default']
-    TermApp: typeof import('./src/views/TermApp.vue')['default']
     TermBody: typeof import('./src/components/TermBody/TermBody.vue')['default']
     TermContainer: typeof import('./src/views/TermContainer.vue')['default']
     TermHeader: typeof import('./src/components/TermHeader/TermHeader.vue')['default']
