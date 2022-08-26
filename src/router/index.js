@@ -10,6 +10,7 @@ import ScanEquipmentsVue from "@/views/managments/ScanEquipments.vue";
 import ManageDevicesVue from "@/views/managments/ManageDevices.vue"
 import NewDeviceVue from "@/views/managments/ManageDevices/NewDevice.vue"
 import EditDeviceVue from "@/views/managments/ManageDevices/EditDevice.vue"
+import AccessDeviceVue from "@/views/managments/ManageDevices/AccessDevice.vue"
 
 import ManageScriptsVue from "@/views/managments/ManageScripts.vue"
 import NewScriptVue from "@/views/managments/ManageScripts/NewScript.vue"
@@ -117,6 +118,11 @@ const routes = [
         path: '/EditDevice/:ip',
         name: 'EditDevice',
         component: EditDeviceVue,
+    },
+    {
+        path: '/AccessDevice',
+        name: 'AccessDevice',
+        component: AccessDeviceVue,
     }
 ]
 

@@ -30,6 +30,10 @@ import { useRoute } from 'vue-router';
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
                 <div class="flex flex-col">
+                    <button @click="$router.push('/AccessDevice')"
+                        class="w-full px-6 py-2 mt-2 my-1 text-white bg-blue-600 rounded-lg font-medium hover:bg-blue-900">
+                        Access Device
+                    </button>
                     <button @click="editDevice"
                         class="w-full px-6 py-2 mt-2 my-1 text-white bg-blue-600 rounded-lg font-medium hover:bg-blue-900">
                         Apply changes

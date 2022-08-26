@@ -7,7 +7,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AccessDevice: typeof import('./src/views/managments/ManageDevices/AccessDevice.vue')['default']
     BaseCommand: typeof import('./src/components/TermBody/TermCommand/BaseCommand.vue')['default']
+    copy: typeof import('./src/views/managments/ManageDevices/NewDevice copy.vue')['default']
     DashBoard: typeof import('./src/views/DashBoard.vue')['default']
     EditDevice: typeof import('./src/views/managments/ManageDevices/EditDevice.vue')['default']
     EditGroup: typeof import('./src/views/managments/ManageGroups/EditGroup.vue')['default']
