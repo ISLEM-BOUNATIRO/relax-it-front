@@ -6,7 +6,7 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
 <template>
 
     <div class="flex items-center justify-center  bg-gray-100">
-        <div class="px-4 py-2 mx-4 mt-4 text-left bg-white shadow-lg md:w-9/12 lg:w-9/12 sm:w-9/12">
+        <div class="px-4 py-2 mx-4 mt-4 text-left bg-white shadow-lg md:w-full lg:w-full sm:w-full">
             <TermContainer></TermContainer>
         </div>
     </div>
