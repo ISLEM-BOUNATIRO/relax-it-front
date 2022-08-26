@@ -5,12 +5,10 @@
 @layer components {
   .box-container {
     /* w-[80%] sm:w-[60%] lg:w-[50%]  */
-    @apply w-[80%] h-[100vh]
-      overflow-hidden
+    @apply w-[100%] h-[100vh]
       rounded-md
       mx-auto
-      font-['Monaco','Monaco_Font']
-      absolute;
+      font-['Monaco','Monaco_Font'];
   }
   .box-header {
     @apply bg-header h-10 leading-10
@@ -34,12 +32,12 @@
   }
   .box-body {
     @apply text-white text-lg
-      bg-body h-[90vh] overflow-auto rounded-bl-md rounded-br-md
+      bg-body h-[60vh] overflow-auto rounded-bl-md rounded-br-md
       p-5;
   }
   /* 命令输入框 */
   .command-input {
-    @apply bg-body outline-none  w-screen ml-5
+    @apply bg-body outline-none  w-full ml-5
       text-red-600 caret-white border-none pb-1;
   }
 }

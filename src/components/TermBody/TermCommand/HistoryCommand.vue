@@ -37,6 +37,7 @@ if (commandStr === '') {
         {{ description }}
       </div>
       <TermWelcome v-if="commandStr.split(' ')[0] === 'welcome'" />
+      <TermScript v-if="commandStr.split(' ')[0] === 'execute'" />
       <TermHelp v-else-if="commandStr.split(' ')[0] === 'help'" />
     </template>
   </BaseCommand>

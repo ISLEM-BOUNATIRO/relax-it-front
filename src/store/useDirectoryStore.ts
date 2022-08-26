@@ -35,7 +35,7 @@ function initDir(): Directory {
   temp = temp.directories[0]
   temp.directories.push({
     id: 2,
-    name: 'murphy',
+    name: 'devices',
     files: [],
     previous: temp,
     directories: []
@@ -66,7 +66,7 @@ const useDirectoryStore = defineStore('directory', () => {
 
   // valid commands(finished commands)
   // prettier-ignore
-  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help', 'echo']
+  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help', 'echo','execute']
   const commandDescription = [
     'cd [dirname] - change directory',
     'ls - list files in current directory',
@@ -76,13 +76,32 @@ const useDirectoryStore = defineStore('directory', () => {
     'touch [filename] - create file',
     'welcome - welcome message',
     'help - help message',
-    'echo [message] - echo message'
+    'echo [message] - echo message',
+    'execute [script] - execute script'
+  ]
+  const scriptEx = [
+    'Executing script for Mister.',
+    'Be patient man, it\'s gettin ready',
+    'A SERIOUS ERROR HAS OCCURED',
+    'You might have to throw out your computer',
+    'Nah just kidding',
+    'What do you call 8 Hobbits? A Hobbyte',
+    'Commoon it was hillarious !',
+    'I feel like I\'m supposed to be loading something...',
+    'Okok I\'m done'
   ]
 
   // help message
   const commandHelp = computed(() => {
     return ValidCommands.map((item, index) => {
       return [item, commandDescription[index]]
+    })
+  })
+
+  // script message
+  const commandScript = computed(() => {
+    return scriptEx.map((item, index) => {
+      return [item, '']
     })
   })
 
@@ -119,6 +138,15 @@ const useDirectoryStore = defineStore('directory', () => {
     })
   }
 
+  const execute = (commandStr: string) => {
+    setHistoryPath()
+    addShowCommand({
+      commandStr,
+      type: 'success',
+      description: 'Beginning execution of the script'
+    })
+  }
+
   return {
     dir,
     cd,
@@ -141,7 +169,9 @@ const useDirectoryStore = defineStore('directory', () => {
     help,
     handleOther,
     splitCommand,
-    echo
+    echo,
+    commandScript,
+    execute
   }
 })
 

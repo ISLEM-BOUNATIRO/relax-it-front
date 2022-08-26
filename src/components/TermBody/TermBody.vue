@@ -3,7 +3,7 @@ const directory = useDirectoryStore()
 const isWelcomeShow = ref(true)
 
 // 执行指令
-const execute = () => {
+const executing = () => {
   const commandStr = commandInput.value.trim()
   const simpleCommand = commandStr.split(' ')[0]
   if (simpleCommand === 'clear') {
@@ -13,6 +13,7 @@ const execute = () => {
   }
   // prettier-ignore
   // 这里不加 prettier-ignore，用不了分号，无法隔离上下文，vsc 高亮丢失
+  console.log(simpleCommand)
   type Options = keyof typeof directory;
   if (directory[simpleCommand as Options]) {
     void (
@@ -75,7 +76,7 @@ useAddEventListener(document, 'keydown', ((e: KeyboardEvent) => {
       <InputCommand
         ref="inputCommandRef"
         v-model="commandInput"
-        @keydown.enter="execute"
+        @keydown.enter="executing"
         :isInput="true"
       >
         <template #show-area>
