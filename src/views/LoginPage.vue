@@ -1,10 +1,13 @@
 <script setup>
 import axios from 'axios'
+import testVue from '@/components/test.vue';
+
 axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
 </script>
 <script>
 export default {
   name: "LoginPage",
+  // components: [testVue],
   data: () => ({ username: "", password: "" }),
   methods: {
     async redirectUser() {
@@ -49,5 +52,5 @@ export default {
       </div>
     </div>
   </div>
-
+  <test-vue></test-vue>
 </template>

@@ -6,7 +6,7 @@ export default createStore(
             login: "not logged",
             view: "Main Menu",
             UserView: "User",
-            ipApi: 'https://relax-it-api.herokuapp.com'
+            ipApi: 'http://127.0.0.1:5000'
 
         },
         mutations: {

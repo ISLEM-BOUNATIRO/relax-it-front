@@ -49,6 +49,7 @@ declare module '@vue/runtime-core' {
     TermMessage: typeof import('./src/components/TermMessage/TermMessage.vue')['default']
     TermScript: typeof import('./src/components/common/TermScript.vue')['default']
     TermWelcome: typeof import('./src/components/common/TermWelcome.vue')['default']
+    Test: typeof import('./src/components/test.vue')['default']
     UsersCard: typeof import('./src/components/cards/UsersCard.vue')['default']
   }
 }
