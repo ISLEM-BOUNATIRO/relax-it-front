@@ -5,7 +5,7 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
 </script>
 <template>
 
-    <div v-if="result === 'not yet'" class="flex items-center justify-center  bg-gray-100">
+    <div v-if="state === 'not yet'" class="flex items-center justify-center  bg-gray-100">
         <div class="px-4 py-2 mx-4 mt-4 text-left bg-white shadow-lg md:w-9/12 lg:w-9/12 sm:w-9/12">
 
             <div class="mt-2">
@@ -47,7 +47,7 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
         </div>
     </div>
 
-    <div v-if="result === 'Added'"
+    <div v-if="state === 'Added'"
         class="flex p-4 mt-2 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
         role="alert">
         <svg aria-hidden="true" class="inline flex-shrink-0 mr-3 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -75,23 +75,35 @@ export default {
         serial_number: "",
         firmware_version: "",
         searched: false,
-        result: "not yet"
+        state: "not yet"
     }), methods: {
         async addDevice() {
             try {
-                this.result = await axios.post(this.$store.getters.getIP + '/api/devices', { ip: this.ip, type: this.type, vendor: this.vendor, model: this.model, serial_number: this.serial_number, firmware_version: this.firmware_version })
-                this.result = this.result.data['result']
-                if (this.result === "1") {
-                    this.result = "Added"
+                const result = await axios.post(this.$store.getters.getIP + '/api/devices', { ip: this.ip, type: this.type, vendor: this.vendor, model: this.model, serial_number: this.serial_number, firmware_version: this.firmware_version })
+                if (result.data['result'] === "1") {
+                    this.state = "Added"
+                } else {
+                    this.ip = result.data['result']
+
                 }
             } catch (error) {
                 console.log(error);
             }
             window.scrollTo(0, 0)
         },
-        getInfo() {
+        async getInfo() {
+
+            const result = await axios.post(this.$store.getters.getIP + '/api/get_device_info', { ip: this.ip });
+            if (result.data['ip']) {
+                this.type = result.data['type'];
+                this.vendor = result.data['vendor'];
+
+                this.model = result.data['model'];
+                this.serial_number = result.data['serial_number'];
+                this.firmware_version = result.data['firmware_version'];
+            }
             document.getElementById("ip-field").disabled = true;
-            this.searched = true
+            this.searched = true;
         }
     }
 }
