@@ -14,6 +14,9 @@ import { useRoute } from 'vue-router';
                     <input v-model="name" type="text"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                         disabled>
+                    <label class="block" for="name">Office Subnet /24</label>
+                    <input v-model="office_subnet" type="text"
+                        class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="office_class">Office class</label>
                     <input v-model="office_class" type="text"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
@@ -92,6 +95,7 @@ import { useRoute } from 'vue-router';
 export default {
     data: () => ({
         name: "",
+        office_subnet: "",
         office_class: "",
         postal_code: "",
         list_wilaya: [],
@@ -127,6 +131,7 @@ export default {
 
 
         this.name = response.data.name
+        this.office_subnet = response.data.office_subnet
         this.office_class = response.data.office_class
         this.postal_code = response.data.postal_code
         this.wilaya = response.data.wilaya

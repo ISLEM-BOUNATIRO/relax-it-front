@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios'
-import testVue from '@/components/test.vue';
+
 
 axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
 </script>

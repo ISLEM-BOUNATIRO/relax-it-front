@@ -13,6 +13,9 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
                     <label class="block" for="name">Office name</label>
                     <input v-model="name" type="text"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                    <label class="block" for="name">Office Subnet /24</label>
+                    <input v-model="office_subnet" type="text"
+                        class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="office_class">Office class</label>
                     <input v-model="office_class" type="text"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
@@ -61,6 +64,7 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
 export default {
     data: () => ({
         name: "",
+        office_subnet: "",
         office_class: "",
         list_wilaya: ["Alger", "Bejaïa", "Bouira"],
         postal_code: "",
@@ -69,7 +73,7 @@ export default {
     }), methods: {
         async addOffice() {
             try {
-                this.result = await axios.post(this.$store.getters.getIP + '/api/offices', { name: this.name, office_class: this.office_class, postal_code: this.postal_code, wilaya: this.wilaya })
+                this.result = await axios.post(this.$store.getters.getIP + '/api/offices', { name: this.name, office_class: this.office_class, postal_code: this.postal_code, wilaya: this.wilaya, office_subnet: this.office_subnet })
                 this.result = this.result.data['result']
                 if (this.result === "1") {
                     this.result = "Added"

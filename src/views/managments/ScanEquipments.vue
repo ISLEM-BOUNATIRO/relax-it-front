@@ -1,18 +1,10 @@
 <script setup>
 import ReturnButtonVue from '@/components/buttons/ReturnButton.vue';
+import testVue from '@/components/test.vue';
 </script>
 <template>
-    <div class="grid grid-cols-4 gap-4">
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-        <div>01</div>
-    </div>
+    <testVue />
+    <br />
 
     <ReturnButtonVue viewTitle="Main Menu" route="/DashBoard" />
 

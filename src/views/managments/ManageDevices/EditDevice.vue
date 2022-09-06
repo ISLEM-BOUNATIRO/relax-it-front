@@ -13,6 +13,9 @@ import { useRoute } from 'vue-router';
                     <label class="block" for="ip">Device Ip</label>
                     <input v-model="ip" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                    <label class="block" for="ip">Hostname</label>
+                    <input v-model="hostname" type="text" disabled
+                        class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="type">Type</label>
                     <input v-model="type" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
@@ -34,10 +37,7 @@ import { useRoute } from 'vue-router';
                         class="w-full px-6 py-2 mt-2 my-1 text-white bg-blue-600 rounded-lg font-medium hover:bg-blue-900">
                         Access Device
                     </button>
-                    <button @click="editDevice"
-                        class="w-full px-6 py-2 mt-2 my-1 text-white bg-blue-600 rounded-lg font-medium hover:bg-blue-900">
-                        Apply changes
-                    </button>
+
                     <button @click="deleteDevice"
                         class="w-full px-6 py-2 my-1 bg-red-600 hover:bg-red-700 text-white  font-medium rounded-lg">
                         <div class=" inline-flex">
@@ -118,6 +118,7 @@ export default {
 
 
         this.ip = response.data.ip
+        this.hostname = response.data.hostname
         this.type = response.data.type
         this.vendor = response.data.vendor
         this.model = response.data.model
@@ -133,11 +134,12 @@ export default {
         model: "",
         serial_number: "",
         firmware_version: "",
+        hostname: "",
         result: "not yet"
     }), methods: {
         async editDevice() {
             try {
-                this.result = await axios.post(this.$store.getters.getIP + '/api/devices/edit', { ip: this.ip, type: this.type, vendor: this.vendor, model: this.model, serial_number: this.serial_number, firmware_version: this.firmware_version })
+                this.result = await axios.post(this.$store.getters.getIP + '/api/devices/edit', { ip: this.ip, type: this.type, vendor: this.vendor, model: this.model, serial_number: this.serial_number, hostname: this.hostname })
                 this.result = this.result.data['result']
                 if (this.result === "3") {
                     this.result = "Edited"

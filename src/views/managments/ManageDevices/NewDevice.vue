@@ -13,6 +13,9 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
                 <input id="ip-field" v-model="ip" type="text"
                     class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 <div v-if="searched">
+                    <label class="block">Hostname</label>
+                    <input v-model="hostname" type="text" disabled
+                        class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="type">Type</label>
                     <input v-model="type" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
@@ -74,12 +77,13 @@ export default {
         model: "",
         serial_number: "",
         firmware_version: "",
+        hostname: "",
         searched: false,
         state: "not yet"
     }), methods: {
         async addDevice() {
             try {
-                const result = await axios.post(this.$store.getters.getIP + '/api/devices', { ip: this.ip, type: this.type, vendor: this.vendor, model: this.model, serial_number: this.serial_number, firmware_version: this.firmware_version })
+                const result = await axios.post(this.$store.getters.getIP + '/api/devices', { ip: this.ip, hostname: this.hostname, type: this.type, vendor: this.vendor, model: this.model, serial_number: this.serial_number, firmware_version: this.firmware_version })
                 if (result.data['result'] === "1") {
                     this.state = "Added"
                 } else {
@@ -97,7 +101,7 @@ export default {
             if (result.data['ip']) {
                 this.type = result.data['type'];
                 this.vendor = result.data['vendor'];
-
+                this.hostname = result.data['hostname'];
                 this.model = result.data['model'];
                 this.serial_number = result.data['serial_number'];
                 this.firmware_version = result.data['firmware_version'];
