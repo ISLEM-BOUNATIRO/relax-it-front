@@ -32,9 +32,7 @@ const socket = io('localhost:5000');
 
 let vm = this
 socket.on('message', function (msg: string) {
-  console.log(msg)
-
-  let type_command = 'success'
+  //console.log(msg)
   if (!msg.includes("offline"))
     directory.addShowCommand({
       commandStr: "a",
