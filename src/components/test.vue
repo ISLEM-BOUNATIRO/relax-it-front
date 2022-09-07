@@ -7,6 +7,9 @@
         <textarea v-model="output" rows="8" type="text" placeholder="output"
             class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"></textarea>
     </div>
+    <div class="flex items-center justify-center bg-gray-100 ">
+        <TermContainer class="mx-8 mt-8"></TermContainer>
+    </div>
 </template>
 <script>
 import { io } from "socket.io-client";

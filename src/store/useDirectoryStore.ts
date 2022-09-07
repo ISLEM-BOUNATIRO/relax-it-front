@@ -66,7 +66,7 @@ const useDirectoryStore = defineStore('directory', () => {
 
   // valid commands(finished commands)
   // prettier-ignore
-  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help', 'echo','execute']
+  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help', 'echo', 'execute']
   const commandDescription = [
     'cd [dirname] - change directory',
     'ls - list files in current directory',
@@ -122,10 +122,10 @@ const useDirectoryStore = defineStore('directory', () => {
   }
 
   // history path
-  const historyPath = ref('/')
+  const historyPath = ref('')
   // record history path
   const setHistoryPath = () => {
-    historyPath.value = currentFullPath.value
+    //historyPath.value = currentFullPath.value
   }
 
   // handle the unfinished commands

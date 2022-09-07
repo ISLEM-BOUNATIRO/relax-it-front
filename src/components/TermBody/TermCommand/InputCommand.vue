@@ -29,22 +29,11 @@ const emits = defineEmits(['update:modelValue'])
 
 <template>
   <BaseCommand>
-    <template #path>
-      {{ currentFullPath }}
-    </template>
     <template #input-area>
-      <input
-        v-if="isInput"
-        type="text"
-        class="command-input"
-        :class="{ 'text-green-400': isValidCommand(modelValue!) }"
-        v-focus
-        ref="commandInputRef"
-        :value="modelValue"
-        @input="
+      <input v-if="isInput" type="text" class="command-input" :class="{ 'text-green-400': isValidCommand(modelValue!) }"
+        v-focus ref="commandInputRef" :value="modelValue" @input="
           emits('update:modelValue', ($event.target! as HTMLInputElement).value)
-        "
-      />
+        " />
     </template>
   </BaseCommand>
 </template>

@@ -31,7 +31,7 @@ const termBody = ref<HTMLElement | null>(null)
 onMounted(() => {
   watch(directory.showCommands, async () => {
     await nextTick()
-    ;(termBody.value as HTMLElement).scrollIntoView(false)
+      ; //(termBody.value as HTMLElement).scrollIntoView(false)
   })
 })
 
@@ -61,24 +61,14 @@ useAddEventListener(document, 'keydown', ((e: KeyboardEvent) => {
 <template>
   <main class="box-body scrollbar">
     <div ref="termBody">
-      <TermWelcome v-show="isWelcomeShow" />
       <!-- 历史命令区域 HistoryCommand -->
-      <HistoryCommand
-        v-for="command of directory.showCommands"
-        :key="command.commandStr"
-        :command="command"
-      >
+      <HistoryCommand v-for="command of directory.showCommands" :key="command.commandStr" :command="command">
         <template #history-command>
           <div class="command-input">{{ command.commandStr }}</div>
         </template>
       </HistoryCommand>
       <!-- 命令输入框区域 InputCommand -->
-      <InputCommand
-        ref="inputCommandRef"
-        v-model="commandInput"
-        @keydown.enter="executing"
-        :isInput="true"
-      >
+      <InputCommand ref="inputCommandRef" v-model="commandInput" @keydown.enter="executing" :isInput="true">
         <template #show-area>
           <div></div>
         </template>
