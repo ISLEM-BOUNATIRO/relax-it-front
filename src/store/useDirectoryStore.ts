@@ -149,6 +149,8 @@ const useDirectoryStore = defineStore('directory', () => {
     })
   }
   const we_are_excuting = false
+  const socket_message = ""
+  const socket_arg = ""
 
   return {
     dir,
@@ -175,7 +177,9 @@ const useDirectoryStore = defineStore('directory', () => {
     echo,
     commandScript,
     execute,
-    we_are_excuting
+    we_are_excuting,
+    socket_message,
+    socket_arg
   }
 })
 

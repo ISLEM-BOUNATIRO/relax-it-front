@@ -6,12 +6,12 @@ import ManageScriptsCardVue from '@/components/cards/ManageScriptsCard.vue';
 import ManageGroupsCardVue from '@/components/cards/ManageGroupsCard.vue';
 import UsersCardVue from '@/components/cards/UsersCard.vue';
 import PostOfficeVue from '@/components/cards/PostOffice.vue';
-
+const directory = useDirectoryStore()
 
 </script>
 <template>
     <div class="flex flex-wrap">
-        <div @click="$router.push('/ScanEquipments'), $store.commit('updateView', { view: 'Scan Equipments' })"
+        <div @click="$router.push('/ScanEquipments'), $store.commit('updateView', { view: 'Scan Equipments' }),directory.socket_message = ''"
             class="w-full md:w-1/2 xl:w-1/3 p-6">
             <ScanCardVue />
         </div>

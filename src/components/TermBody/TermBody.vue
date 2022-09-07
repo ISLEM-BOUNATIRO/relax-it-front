@@ -59,7 +59,7 @@ const termBody = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   //CLEAR
-  socket.emit('scan_bp', "192.168.217.0")
+  socket.emit(directory.socket_message, directory.socket_arg)
   clear_all();
 
   watch(directory.showCommands, async () => {
