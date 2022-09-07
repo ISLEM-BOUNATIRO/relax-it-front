@@ -33,12 +33,18 @@ const socket = io('localhost:5000');
 let vm = this
 socket.on('message', function (msg: string) {
   //console.log(msg)
-  if (!msg.includes("offline"))
+  if (msg.includes("pingable"))
     directory.addShowCommand({
       commandStr: "a",
       type: 'success',
       description: msg
-    })
+    });
+  else
+    directory.addShowCommand({
+      commandStr: "a",
+      type: 'info',
+      description: msg
+    });
 
 })
 const clear_all = () => {
