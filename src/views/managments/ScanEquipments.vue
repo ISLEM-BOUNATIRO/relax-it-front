@@ -41,6 +41,7 @@ export default {
     },
     created: function () {
         this.directory.socket_message = ""
+        this.directory.terminal_header = ""
 
     }
 }

@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const directory = useDirectoryStore()
+</script>
 
 <template>
-  <span class="text-green-400"> Scanning devices ...</span>
+  <span class="text-green-400"> {{directory.terminal_header}}</span>
 </template>

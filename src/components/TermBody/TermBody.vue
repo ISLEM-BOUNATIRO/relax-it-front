@@ -39,12 +39,18 @@ socket.on('message', function (msg: string) {
       type: 'success',
       description: msg
     });
-  else
-    directory.addShowCommand({
-      commandStr: "a",
-      type: 'info',
-      description: msg
-    });
+  else {
+    if (msg.includes("%"))
+      directory.terminal_header = msg
+    else
+      directory.addShowCommand({
+        commandStr: "a",
+        type: 'info',
+        description: msg
+      });
+  }
+
+
 
 })
 const clear_all = () => {
