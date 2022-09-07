@@ -12,6 +12,7 @@
     </div>
 </template>
 <script>
+//const directory = useDirectoryStore()
 import { io } from "socket.io-client";
 export default {
     data() {
@@ -20,9 +21,10 @@ export default {
             socket: null,
 
         }
-    },
+    }/*,
     methods: {
         send_msg() {
+            //directory.we_are_excuting = !directory.we_are_excuting
             //this.socket.emit('scan_bp', "192.168.217.0")
             this.socket.emit('scan_bp', "192.168.217.0")
         },
@@ -38,6 +40,7 @@ export default {
         //     this.socket = socket
         // });
         this.socket = io('localhost:5000');
+
     },
     mounted() {
         let vm = this
@@ -45,6 +48,6 @@ export default {
             // console.log(msg)
             vm.add_message(msg)
         })
-    }
+    }*/
 }
 </script>

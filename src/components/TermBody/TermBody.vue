@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { io } from "socket.io-client";
 const directory = useDirectoryStore()
 const isWelcomeShow = ref(true)
 
@@ -25,11 +26,26 @@ const executing = () => {
   start = directory.showCommands.length - 1
   commandInput.value = ''
 }
-const executing2 = () => {
+
+
+const socket = io('localhost:5000');
+
+let vm = this
+socket.on('message', function (msg: string) {
+  console.log(msg)
+  let type_command = 'success'
+  if (!msg.includes("offline"))
+    directory.addShowCommand({
+      commandStr: "a",
+      type: 'success',
+      description: msg
+    })
+
+})
+const clear_all = () => {
   isWelcomeShow.value = false
   commandInput.value = ''
   directory.clearShowCommands()
-
 }
 
 const commandInput = ref('')
@@ -37,12 +53,16 @@ const termBody = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   //CLEAR
-  executing2();
+  socket.emit('scan_bp', "192.168.217.0")
+  clear_all();
 
   watch(directory.showCommands, async () => {
     await nextTick()
       ; //(termBody.value as HTMLElement).scrollIntoView(false)
   })
+})
+onUnmounted(() => {
+  socket.disconnect()
 })
 
 // 实现上下键 pageup pagedown 点击切换历史命令
@@ -78,7 +98,8 @@ useAddEventListener(document, 'keydown', ((e: KeyboardEvent) => {
         </template>
       </HistoryCommand>
       <!-- 命令输入框区域 InputCommand -->
-      <InputCommand ref="inputCommandRef" v-model="commandInput" @keydown.enter="executing" :isInput="true">
+      <InputCommand v-if="directory.we_are_excuting" ref="inputCommandRef" v-model="commandInput"
+        @keydown.enter="executing" :isInput="true">
         <template #show-area>
           <div></div>
         </template>
@@ -86,41 +107,3 @@ useAddEventListener(document, 'keydown', ((e: KeyboardEvent) => {
     </div>
   </main>
 </template>
-<script lang="ts">
-import { io } from "socket.io-client";
-export default {
-  data() {
-    return {
-      output: "",
-      socket: null,
-
-    }
-  },
-  methods: {
-    send_msg() {
-      //this.socket.emit('scan_bp', "192.168.217.0")
-      this.socket.emit('scan_bp', "192.168.217.0")
-    },
-    add_message(msg: String) {
-      // console.log('msg frmo method', msg)
-
-      this.output = this.output + msg + "\n"
-    }
-  },
-  created() {
-
-    // io.on("connection", (socket) => {
-    //     this.socket = socket
-    // });
-    this.socket = io('localhost:5000');
-  },
-  mounted() {
-
-    let vm = this
-    this.socket.on('message', function (msg: String) {
-      // console.log(msg)
-      vm.add_message(msg)
-    })
-  }
-}
-</script>

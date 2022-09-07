@@ -19,22 +19,20 @@ if (commandStr === '') {
 
 <template>
   <BaseCommand>
-    <template #path>
+    <!-- <template #path>
       <div>{{ historyPath }}</div>
-    </template>
+    </template> -->
     <template #history-command>
       <div class="pl-5" :class="isValid ? 'text-green-500' : 'text-red-500'">
         {{ commandStr }}
       </div>
     </template>
     <template #show-area>
-      <TermMessage v-if="isMessageShow" :type="type" description="description">
+      <TermMessage v-if="isMessageShow " :type="type">{{ type }}
       </TermMessage>
-
-
-
-
-
+      <span v-if="description && isMessageShow" class="break-words">
+        &thinsp; {{ description }}
+      </span>
       <TermWelcome v-if="commandStr.split(' ')[0] === 'welcome'" />
       <TermScript v-if="commandStr.split(' ')[0] === 'execute'" />
       <TermHelp v-else-if="commandStr.split(' ')[0] === 'help'" />

@@ -1,4 +1,5 @@
 // the directory system data structure
+
 export interface Directory {
   id: number
   name: string
@@ -121,6 +122,7 @@ const useDirectoryStore = defineStore('directory', () => {
     })
   }
 
+
   // history path
   const historyPath = ref('')
   // record history path
@@ -146,6 +148,7 @@ const useDirectoryStore = defineStore('directory', () => {
       description: 'Beginning execution of the script'
     })
   }
+  const we_are_excuting = false
 
   return {
     dir,
@@ -171,7 +174,8 @@ const useDirectoryStore = defineStore('directory', () => {
     splitCommand,
     echo,
     commandScript,
-    execute
+    execute,
+    we_are_excuting
   }
 })
 

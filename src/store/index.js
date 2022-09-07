@@ -6,7 +6,8 @@ export default createStore(
             login: "not logged",
             view: "Main Menu",
             UserView: "User",
-            ipApi: 'http://127.0.0.1:5000'
+            ipApi: 'http://127.0.0.1:5000',
+            we_are_excuting: false
 
         },
         mutations: {
@@ -26,6 +27,8 @@ export default createStore(
             getView(state) { return state.view },
             getUserView(state) { return state.UserView },
             getLoginStatus(state) { return state.login },
+            getWeAreExecuting(state) { return state.we_are_excuting },
+
         },
 
     })
