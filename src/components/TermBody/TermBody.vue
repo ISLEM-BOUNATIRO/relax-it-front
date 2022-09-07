@@ -33,7 +33,7 @@ const socket = io('localhost:5000');
 let vm = this
 socket.on('message', function (msg: string) {
   //console.log(msg)
-  if (msg.includes("pingable"))
+  if (msg.includes("added"))
     directory.addShowCommand({
       commandStr: "a",
       type: 'success',
