@@ -12,7 +12,7 @@ const executing = () => {
     return void directory.clearShowCommands()
   }
   // prettier-ignore
-  // 这里不加 prettier-ignore，用不了分号，无法隔离上下文，vsc 高亮丢失
+
   console.log(simpleCommand)
   type Options = keyof typeof directory;
   if (directory[simpleCommand as Options]) {
@@ -25,10 +25,20 @@ const executing = () => {
   start = directory.showCommands.length - 1
   commandInput.value = ''
 }
+const executing2 = () => {
+  isWelcomeShow.value = false
+  commandInput.value = ''
+  directory.clearShowCommands()
+
+}
 
 const commandInput = ref('')
 const termBody = ref<HTMLElement | null>(null)
+
 onMounted(() => {
+  //CLEAR
+  executing2();
+
   watch(directory.showCommands, async () => {
     await nextTick()
       ; //(termBody.value as HTMLElement).scrollIntoView(false)
@@ -76,3 +86,41 @@ useAddEventListener(document, 'keydown', ((e: KeyboardEvent) => {
     </div>
   </main>
 </template>
+<script lang="ts">
+import { io } from "socket.io-client";
+export default {
+  data() {
+    return {
+      output: "",
+      socket: null,
+
+    }
+  },
+  methods: {
+    send_msg() {
+      //this.socket.emit('scan_bp', "192.168.217.0")
+      this.socket.emit('scan_bp', "192.168.217.0")
+    },
+    add_message(msg: String) {
+      // console.log('msg frmo method', msg)
+
+      this.output = this.output + msg + "\n"
+    }
+  },
+  created() {
+
+    // io.on("connection", (socket) => {
+    //     this.socket = socket
+    // });
+    this.socket = io('localhost:5000');
+  },
+  mounted() {
+
+    let vm = this
+    this.socket.on('message', function (msg: String) {
+      // console.log(msg)
+      vm.add_message(msg)
+    })
+  }
+}
+</script>

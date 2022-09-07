@@ -28,14 +28,13 @@ if (commandStr === '') {
       </div>
     </template>
     <template #show-area>
-      <TermMessage v-if="isMessageShow" :type="type">{{ type }}</TermMessage>
-      <div v-if="commandStr === 'ls'" class="break-words">
-        <span>{{ files }}</span>
-        <span class="text-green-500">{{ directories }}</span>
-      </div>
-      <div v-if="description && isMessageShow" class="break-words">
-        {{ description }}
-      </div>
+      <TermMessage v-if="isMessageShow" :type="type" description="description">
+      </TermMessage>
+
+
+
+
+
       <TermWelcome v-if="commandStr.split(' ')[0] === 'welcome'" />
       <TermScript v-if="commandStr.split(' ')[0] === 'execute'" />
       <TermHelp v-else-if="commandStr.split(' ')[0] === 'help'" />

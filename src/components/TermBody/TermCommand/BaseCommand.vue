@@ -9,7 +9,7 @@ defineProps<Props>()
 
   <div class="pt-3 pr-5">
     <div class="flex items-center">
-      <span class="text-lg font-bold text-[#881798]">❯</span>
+      <span class="text-lg font-bold text-[#1aa8ae]">❯</span>
       <slot name="history-command"></slot>
       <slot name="input-area"></slot>
     </div>

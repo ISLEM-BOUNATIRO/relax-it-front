@@ -1,6 +1,7 @@
 <script setup lang="ts">
 interface TermMessageProps {
   type: 'info' | 'error' | 'success' | 'warning'
+  description: String
   showTime?: boolean
 }
 
@@ -17,11 +18,14 @@ const getTime = () => new Date().toLocaleTimeString()
 </script>
 
 <template>
+  <!--       
   <span v-if="showTime" class="pr-3">{{ getTime() }}</span>
-  <div
-    :class="MessageToColor[type]"
-    class="inline-block h-[1.5rem] leading-[1.5rem] pl-1 pr-1 mr-3"
-  >
-    <slot>default</slot>
+-->
+
+  <div class="break-words">
+    <span :class="MessageToColor[type]">
+      {{ type }}
+    </span>
+    : {{ description }}
   </div>
 </template>
