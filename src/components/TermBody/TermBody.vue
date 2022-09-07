@@ -33,6 +33,7 @@ const socket = io('localhost:5000');
 let vm = this
 socket.on('message', function (msg: string) {
   console.log(msg)
+
   let type_command = 'success'
   if (!msg.includes("offline"))
     directory.addShowCommand({
@@ -46,6 +47,7 @@ const clear_all = () => {
   isWelcomeShow.value = false
   commandInput.value = ''
   directory.clearShowCommands()
+
 }
 
 const commandInput = ref('')
@@ -91,6 +93,7 @@ useAddEventListener(document, 'keydown', ((e: KeyboardEvent) => {
 <template>
   <main class="box-body scrollbar">
     <div ref="termBody">
+      <TermWelcome></TermWelcome>
       <!-- 历史命令区域 HistoryCommand -->
       <HistoryCommand v-for="command of directory.showCommands" :key="command.commandStr" :command="command">
         <template #history-command>
