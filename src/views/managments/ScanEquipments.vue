@@ -27,14 +27,14 @@ export default {
     methods: {
         scanOffice() {
             this.directory.we_are_excuting = false
-            this.directory.socket_arg = "192.168.217.0"
+            this.directory.socket_arg = "10.117.5.0"
             //ORDER IS IMPORTANT  socket_message HAS TO BE LAST 
             this.directory.socket_message = "scan_bp"
             console.log(directory.socket_message)
         },
         scanWilaya() {
             this.directory.we_are_excuting = false
-            this.directory.socket_arg = "104"
+            this.directory.socket_arg = "53"
             //ORDER IS IMPORTANT  socket_message HAS TO BE LAST 
             this.directory.socket_message = "scan_wilaya"
         }
