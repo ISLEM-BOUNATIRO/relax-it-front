@@ -40,7 +40,7 @@ export default {
     <div class="flex flex-col items-center justify-center  bg-gray-100">
         <LargeButton class="m-4" @click="$router.push('/NewScript')" buttonText=" Add new script">
         </LargeButton>
-        <input v-on:input="applySearch" v-model="search"
+        <input spellcheck="false" v-on:input="applySearch" v-model="search"
             class="  px-6 py-2.5 w-1/3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Script name " />
     </div>

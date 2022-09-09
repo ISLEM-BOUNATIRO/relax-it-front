@@ -1,8 +1,9 @@
 <script setup>
 import ReturnButtonVue from '@/components/buttons/ReturnButton.vue';
 import axios from 'axios'
-axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
 import { useRoute } from 'vue-router';
+axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
+
 </script>
 <template>
 
@@ -11,29 +12,29 @@ import { useRoute } from 'vue-router';
             <div class="mt-2">
                 <div>
                     <label class="block" for="ip">Device Ip</label>
-                    <input v-model="ip" type="text" disabled
+                    <input spellcheck="false" v-model="ip" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="ip">Hostname</label>
-                    <input v-model="hostname" type="text" disabled
+                    <input spellcheck="false" v-model="hostname" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="type">Type</label>
-                    <input v-model="type" type="text" disabled
+                    <input spellcheck="false" v-model="type" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="vendor">Vendor</label>
-                    <input v-model="vendor" type="text" disabled
+                    <input spellcheck="false" v-model="vendor" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="model">Model</label>
-                    <input v-model="model" type="text" disabled
+                    <input spellcheck="false" v-model="model" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="serial_number">Serial Number</label>
-                    <input v-model="serial_number" type="text" disabled
+                    <input spellcheck="false" v-model="serial_number" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="firmware_version">Firmware Version</label>
-                    <input v-model="firmware_version" type="text" disabled
+                    <input spellcheck="false" v-model="firmware_version" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
                 <div class="flex flex-col">
-                    <button @click="$router.push('/AccessDevice')"
+                    <button @click="$router.push('/AccessDevice/'+ip)"
                         class="w-full px-6 py-2 mt-2 my-1 text-white bg-blue-600 rounded-lg font-medium hover:bg-blue-900">
                         Access Device
                     </button>

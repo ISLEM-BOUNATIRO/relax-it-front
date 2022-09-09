@@ -7,7 +7,8 @@ export default createStore(
             view: "Main Menu",
             UserView: "User",
             ipApi: 'http://127.0.0.1:5000',
-            we_are_excuting: false
+            we_are_excuting: false,
+
 
         },
         mutations: {

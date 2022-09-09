@@ -120,7 +120,7 @@ const routes = [
         component: EditDeviceVue,
     },
     {
-        path: '/AccessDevice',
+        path: '/AccessDevice/:ip',
         name: 'AccessDevice',
         component: AccessDeviceVue,
     }

@@ -11,7 +11,7 @@ import { useRoute } from 'vue-router';
             <div class="mt-2">
                 <div>
                     <label class="block" for="name">Group name</label>
-                    <input v-model="name" type="text"
+                    <input spellcheck="false" v-model="name" type="text"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                         disabled>
                     <textarea v-model="description" type="text" placeholder="Description"
@@ -57,7 +57,7 @@ import { useRoute } from 'vue-router';
                                         <tr v-for="item in members" :key="item.id"
                                             class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{
-                                                    item.id
+                                            item.id
                                             }}
                                             </td>
                                             <td @click="$router.push('/EditDevice/' + item.ip)"

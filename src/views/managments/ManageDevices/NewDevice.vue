@@ -10,26 +10,26 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
 
             <div class="mt-2">
                 <label class="block" for="ip">Device Ip</label>
-                <input id="ip-field" v-model="ip" type="text"
+                <input spellcheck="false" id="ip-field" v-model="ip" type="text"
                     class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 <div v-if="searched">
                     <label class="block">Hostname</label>
-                    <input v-model="hostname" type="text" disabled
+                    <input spellcheck="false" v-model="hostname" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="type">Type</label>
-                    <input v-model="type" type="text" disabled
+                    <input spellcheck="false" v-model="type" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="vendor">Vendor</label>
-                    <input v-model="vendor" type="text" disabled
+                    <input spellcheck="false" v-model="vendor" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="model">Model</label>
-                    <input v-model="model" type="text" disabled
+                    <input spellcheck="false" v-model="model" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="serial_number">Serial Number</label>
-                    <input v-model="serial_number" type="text" disabled
+                    <input spellcheck="false" v-model="serial_number" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="firmware_version">Firmware Version</label>
-                    <input v-model="firmware_version" type="text" disabled
+                    <input spellcheck="false" v-model="firmware_version" type="text" disabled
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
 
                 </div>

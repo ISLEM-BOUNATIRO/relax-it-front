@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface TermMessageProps {
-  type: 'info' | 'error' | 'success' | 'warning'
+  type: 'info' | 'error' | 'success' | 'warning' | ''
   showTime?: boolean
 }
 

@@ -11,17 +11,17 @@ import { useRoute } from 'vue-router';
             <div class="mt-2">
                 <div>
                     <label class="block" for="name">Office name</label>
-                    <input v-model="name" type="text"
+                    <input spellcheck="false" v-model="name" type="text"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                         disabled>
                     <label class="block" for="name">Office Subnet /24</label>
-                    <input v-model="office_subnet" type="text"
+                    <input spellcheck="false" v-model="office_subnet" type="text"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="office_class">Office class</label>
-                    <input v-model="office_class" type="text"
+                    <input spellcheck="false" v-model="office_class" type="text"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="postal_code">Postal code</label>
-                    <input v-model="postal_code" type="text"
+                    <input spellcheck="false" v-model="postal_code" type="text"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="wilaya">Wilaya</label>
                     <select id="sel" v-model="wilaya"

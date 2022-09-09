@@ -11,22 +11,24 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
             <div class="mt-2">
                 <div>
                     <label class="block" for="name">Username</label>
-                    <input v-model="username" type="text" placeholder="Username"
+                    <input spellcheck="false" v-model="username" type="text" placeholder="Username"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
                 <div class="mt-4">
                     <label class="block" for="email">Email</label>
-                    <input v-model="email" type="text" placeholder="Email"
+                    <input spellcheck="false" v-model="email" type="text" placeholder="Email"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
                 <div class="mt-4">
                     <label class="block">Password</label>
-                    <input v-on:input="verifyEquality" v-model="password" type="password" placeholder="Password"
+                    <input spellcheck="false" v-on:input="verifyEquality" v-model="password" type="password"
+                        placeholder="Password"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
                 <div class="mt-4">
                     <label class="block">Confirm Password</label>
-                    <input v-on:input="verifyEquality" v-model="confirmation" type="password" placeholder="Password"
+                    <input spellcheck="false" v-on:input="verifyEquality" v-model="confirmation" type="password"
+                        placeholder="Password"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                 </div>
                 <span v-if="!equal" class="text-xs text-red-400">Password must be same!</span>

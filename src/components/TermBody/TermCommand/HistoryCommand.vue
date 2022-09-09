@@ -23,14 +23,14 @@ if (commandStr === '') {
       <div>{{ historyPath }}</div>
     </template> -->
     <template #history-command>
-      <div class="pl-5" :class="isValid ? 'text-green-500' : 'text-red-500'">
+      <div class="pl-5" :class="'text-green-500'">
         {{ commandStr }}
       </div>
     </template>
     <template #show-area>
       <TermMessage v-if="isMessageShow " :type="type">{{ type }}
       </TermMessage>
-      <span v-if="description && isMessageShow" class="break-words">
+      <span v-if="description && isMessageShow" class="">
         &thinsp; {{ description }}
       </span>
       <TermWelcome v-if="commandStr.split(' ')[0] === 'welcome'" />

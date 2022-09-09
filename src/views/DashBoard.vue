@@ -6,6 +6,7 @@ import ManageScriptsCardVue from '@/components/cards/ManageScriptsCard.vue';
 import ManageGroupsCardVue from '@/components/cards/ManageGroupsCard.vue';
 import UsersCardVue from '@/components/cards/UsersCard.vue';
 import PostOfficeVue from '@/components/cards/PostOffice.vue';
+const { currentDirName } = storeToRefs(useDirectoryStore())
 const directory = useDirectoryStore()
 
 </script>
@@ -16,7 +17,8 @@ const directory = useDirectoryStore()
             <ScanCardVue />
         </div>
         <div class="w-full md:w-1/2 xl:w-1/3 p-6">
-            <div @click="$router.push('/ManageDevices'), $store.commit('updateView', { view: 'Manage Devices' })">
+            <div
+                @click="$router.push('/ManageDevices'), $store.commit('updateView', { view: 'Manage Devices' }),directory.socket_message = ''">
                 <ManageDevicesCardVue />
             </div>
 

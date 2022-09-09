@@ -41,6 +41,7 @@ declare module '@vue/runtime-core' {
     ScanCard: typeof import('./src/components/cards/ScanCard.vue')['default']
     ScanEquipments: typeof import('./src/views/managments/ScanEquipments.vue')['default']
     SearchField: typeof import('./src/components/input/SearchField.vue')['default']
+    SideButton: typeof import('./src/components/buttons/SideButton.vue')['default']
     SideNavBar: typeof import('./src/components/layouts/SideNavBar.vue')['default']
     TermBody: typeof import('./src/components/TermBody/TermBody.vue')['default']
     TermContainer: typeof import('./src/views/TermContainer.vue')['default']
@@ -49,7 +50,6 @@ declare module '@vue/runtime-core' {
     TermMessage: typeof import('./src/components/TermMessage/TermMessage.vue')['default']
     TermScript: typeof import('./src/components/common/TermScript.vue')['default']
     TermWelcome: typeof import('./src/components/common/TermWelcome.vue')['default']
-    Test: typeof import('./src/components/test.vue')['default']
     UsersCard: typeof import('./src/components/cards/UsersCard.vue')['default']
   }
 }

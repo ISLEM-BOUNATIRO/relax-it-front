@@ -3,12 +3,12 @@ import { Icon } from '@iconify/vue'
 
 const { currentDirName } = storeToRefs(useDirectoryStore())
 
-// 触发关闭终端 TermApp
+const directory = useDirectoryStore()
 const foo = inject<() => void>(closeKey)
 </script>
 
 <template>
-  <!-- 终端顶部区域 -->
+
   <header class="box-header">
     <div class="circle-container">
       <div @click="foo" class="circle bg-red-600">
@@ -23,7 +23,7 @@ const foo = inject<() => void>(closeKey)
     </div>
     <div class="center-dir-title">
       <Icon icon="ant-design:folder-filled" class="text-[#57c5ff]" />
-      <span class="ml-2 select-none">{{ currentDirName }}</span>
+      <span class="ml-2 select-none">{{ directory.socket_arg}}</span>
     </div>
     <div class="circle-container"></div>
   </header>

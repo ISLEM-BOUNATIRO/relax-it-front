@@ -73,7 +73,7 @@ export default {
     <div v-if="result === 'not yet'" class="flex flex-col items-center justify-center  bg-gray-100">
         <LargeButton class="m-4" @click="$router.push('/NewDevice')" buttonText=" Add new device">
         </LargeButton>
-        <input v-on:input="applySearch" v-model="search"
+        <input spellcheck="false" v-on:input="applySearch" v-model="search"
             class="  px-6 py-2.5 w-1/3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="device ip " />
     </div>
@@ -107,8 +107,8 @@ export default {
                                 Firmware Version
                             </th>
                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                <input @click="selectAll" class=" cursor-pointer accent-emerald-500 text-sm font-medium"
-                                    type="checkbox" />
+                                <input spellcheck="false" @click="selectAll"
+                                    class=" cursor-pointer accent-emerald-500 text-sm font-medium" type="checkbox" />
                             </th>
                         </tr>
                     </thead>
@@ -140,7 +140,7 @@ export default {
                                 {{ item.firmware_version }}
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                <input v-model="devicesToAdd" type="checkbox"
+                                <input spellcheck="false" v-model="devicesToAdd" type="checkbox"
                                     class="cursor-pointer accent-emerald-500 text-sm font-medium  " :value="item.ip" />
 
                             </td>

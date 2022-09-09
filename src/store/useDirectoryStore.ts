@@ -12,7 +12,7 @@ export interface Directory {
 export interface Command {
   commandStr: string
   isValid?: boolean
-  type: 'success' | 'error' | 'warning' | 'info'
+  type: 'success' | 'error' | 'warning' | 'info' | ''
   description?: string
 }
 
@@ -152,6 +152,7 @@ const useDirectoryStore = defineStore('directory', () => {
   const socket_message = ""
   const socket_arg = ""
   const terminal_header = ""
+  const current_user = "Admin"
 
   return {
     dir,
@@ -181,7 +182,8 @@ const useDirectoryStore = defineStore('directory', () => {
     we_are_excuting,
     socket_message,
     socket_arg,
-    terminal_header
+    terminal_header,
+    current_user
   }
 })
 

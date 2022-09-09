@@ -1,10 +1,12 @@
-<script setup></script>
-  <template >
+<script setup>
+const directory = useDirectoryStore()
+</script>
+<template >
 
   <div class="flex justify-end py-2 sm:px-6 lg:px-8">
     <router-link :to="{ path: route }">
 
-      <button @click="$store.commit('updateView', { view: viewTitle })"
+      <button @click="$store.commit('updateView', { view: viewTitle }),directory.socket_message==''"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded relative bottom-0 right-0 ">
         RETURN
       </button>

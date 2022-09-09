@@ -1,29 +1,26 @@
 <script setup>
 import axios from 'axios'
 
-
+const directory = useDirectoryStore()
 axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
 </script>
 <script>
 export default {
   name: "LoginPage",
-  // components: [testVue],
   data: () => ({ username: "", password: "" }),
   methods: {
     async redirectUser() {
       const response = await axios.post(this.$store.getters.getIP + '/login', { username: this.username, password: this.password })
       this.$store.commit('setLoginStatus', response.data['result'])
       let connected = (this.$store.getters.getLoginStatus == "connected")
-      console.log(connected)
+
       if (connected) {
-        console.log(connected)
+        this.directory.current_user = this.username
         this.$store.commit('updateView', { view: 'Main Menu' })
         this.$store.commit('updateUserView', { view: 'User' })
         this.$router.push('/DashBoard')
       }
-
     }
-
   }
 }
 </script>
@@ -38,11 +35,11 @@ export default {
         <h2 className='text-4xl font-bold text-center py-6'>RELAX-IT</h2>
         <div className='flex flex-col py-2'>
           <label>Username</label>
-          <input v-model="username" className='border p-2' type="text" />
+          <input spellcheck="false" v-model="username" className='border p-2' type="text" />
         </div>
         <div className='flex flex-col py-2'>
           <label>Password</label>
-          <input v-model="password" className='border p-2' type="password" />
+          <input spellcheck="false" v-model="password" className='border p-2' type="password" />
         </div>
 
         <button @click=redirectUser()
@@ -52,5 +49,5 @@ export default {
       </div>
     </div>
   </div>
-  <test-vue></test-vue>
+
 </template>

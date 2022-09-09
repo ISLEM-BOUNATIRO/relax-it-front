@@ -11,7 +11,7 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
             <div class="mt-2">
                 <div>
                     <label class="block" for="name">Group name</label>
-                    <input v-model="Groupname" type="text" placeholder="Group name"
+                    <input spellcheck="false" v-model="Groupname" type="text" placeholder="Group name"
                         class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                     <label class="block" for="description">Group description</label>
                     <textarea v-model="description" rows="8" type="text" placeholder="Description"
