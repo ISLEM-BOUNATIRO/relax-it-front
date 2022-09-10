@@ -14,7 +14,7 @@ const directory = useDirectoryStore()
     <div v-else>
         <LargeButton class="m-4" @click="accessTelnet" buttonText=" Use Telnet">
         </LargeButton>
-        <LargeButton class="m-4" @click="accessTelnet" buttonText=" Use Ssh">
+        <LargeButton class="m-4" @click="accessSsh" buttonText=" Use Ssh">
         </LargeButton>
     </div>
     <ReturnButtonVue viewTitle="Manage Devices" :route=return_route />
@@ -36,7 +36,7 @@ export default {
             this.directory.we_are_excuting = true
             this.directory.socket_arg = this.ip
             //ORDER IS IMPORTANT  socket_message HAS TO BE LAST 
-            this.directory.socket_message = "telnet_connect"
+            this.directory.socket_message = "access_ssh"
 
         }
     },
