@@ -17,11 +17,12 @@ const executing = () => {
 socket.on('message', function (msg: string) {
   const b = !directory.we_are_excuting
   if (msg.includes("#"))
-    directory.addShowCommand({
-      commandStr: commandInput.value.trim(),
-      type: '',
-      description: msg
-    });
+    console.log(typeof msg),
+      directory.addShowCommand({
+        commandStr: commandInput.value.trim(),
+        type: '',
+        description: msg
+      });
   else if (msg.includes("added") && b)
     directory.addShowCommand({
       commandStr: "a",

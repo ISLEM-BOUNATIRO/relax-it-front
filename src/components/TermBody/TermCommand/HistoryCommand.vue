@@ -30,7 +30,7 @@ if (commandStr === '') {
     <template #show-area>
       <TermMessage v-if="isMessageShow " :type="type">{{ type }}
       </TermMessage>
-      <span v-if="description && isMessageShow" class="">
+      <span v-if="description && isMessageShow" class="whitespace-pre-line">
         &thinsp; {{ description }}
       </span>
       <TermWelcome v-if="commandStr.split(' ')[0] === 'welcome'" />

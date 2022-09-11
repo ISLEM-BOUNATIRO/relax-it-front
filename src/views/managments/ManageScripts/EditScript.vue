@@ -86,17 +86,27 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
     </div>
     <div v-else>
 
-        <LargeButton @click="executeScript" class="m-4" buttonText="One device">
+
+        <label class="block">Device IP : </label>
+        <input spellcheck="false" v-model="selected_device" type="text"
+            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+        <LargeButton @click="executeScriptDevice" class="m-4" buttonText="One device">
         </LargeButton>
+
+        <label class="block">Group : </label>
+        <select v-model="selected_group"
+            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+            <option v-for="group_select in list_group" :key="group_select.id" :value="group_select.name">
+                {{ group_select.name }}</option>
+        </select>
         <LargeButton class="m-4" buttonText="Group of devices">
         </LargeButton>
         <label class="block" for="content">Execution output</label>
-        <textarea disabled v-model="output" rows="8" type="text"
+        <textarea disabled v-model="output" rows="13" type="text"
             class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                </textarea>
-
-
     </div>
+
     <ReturnButtonVue viewTitle="Manage Scripts" route="/ManageScripts" />
 </template>
 
@@ -105,6 +115,8 @@ export default {
     created: async function () {
         const route = useRoute()
         this.directory.socket_message = ""
+        this.directory.terminal_header = ""
+        this.directory.we_are_excuting = false
         this.output = ""
         const response = await axios.post(this.$store.getters.getIP + '/api/script', { "name": route.params.name }).catch(function (error) {
             if (error.response) {
@@ -126,6 +138,16 @@ export default {
         });
 
 
+
+
+        axios(this.$store.getters.getIP + '/api/groups')
+            .then(response => {
+                this.list_group = response.data
+            })
+
+
+
+
         this.name = response.data.name
         this.description = response.data.description
         this.content = response.data.content
@@ -140,12 +162,15 @@ export default {
         creation_date: "",
         result: "not yet",
         weExecuting: false,
-        output: ""
+        output: "",
+        selected_device: "192.168.217.253",
+        selected_group: "",
+        list_group: [],
     }), methods: {
         letsExecute() { this.weExecuting = true },
-        async executeScript() {
+        async executeScriptDevice() {
             try {
-                this.result = await axios.post(this.$store.getters.getIP + '/api/execute_script', { name: this.name, "ip": "192.168.217.253" })
+                this.result = await axios.post(this.$store.getters.getIP + '/api/execute_script', { name: this.name, ip: this.selected_device })
                 this.output = this.result.data['output']
 
             } catch (error) {
