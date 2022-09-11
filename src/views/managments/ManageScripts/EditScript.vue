@@ -86,25 +86,25 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
     </div>
     <div v-else>
 
+        <div v-if="directory.socket_message!=''" class="flex items-center justify-center bg-gray-100 ">
+            <TermContainer class="mx-8 mt-8"></TermContainer>
+        </div>
+        <div v-else>
+            <label class="block">Device IP : </label>
+            <input spellcheck="false" v-model="selected_device" type="text"
+                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+            <LargeButton @click="executeScriptDevice" class="m-4" buttonText="One device">
+            </LargeButton>
 
-        <label class="block">Device IP : </label>
-        <input spellcheck="false" v-model="selected_device" type="text"
-            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
-        <LargeButton @click="executeScriptDevice" class="m-4" buttonText="One device">
-        </LargeButton>
-
-        <label class="block">Group : </label>
-        <select v-model="selected_group"
-            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
-            <option v-for="group_select in list_group" :key="group_select.id" :value="group_select.name">
-                {{ group_select.name }}</option>
-        </select>
-        <LargeButton class="m-4" buttonText="Group of devices">
-        </LargeButton>
-        <label class="block" for="content">Execution output</label>
-        <textarea disabled v-model="output" rows="13" type="text"
-            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
-               </textarea>
+            <label class="block">Group : </label>
+            <select v-model="selected_group"
+                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                <option v-for="group_select in list_group" :key="group_select.id" :value="group_select.name">
+                    {{ group_select.name }}</option>
+            </select>
+            <LargeButton class="m-4" buttonText="Group of devices">
+            </LargeButton>
+        </div>
     </div>
 
     <ReturnButtonVue viewTitle="Manage Scripts" route="/ManageScripts" />
@@ -162,21 +162,21 @@ export default {
         creation_date: "",
         result: "not yet",
         weExecuting: false,
-        output: "",
         selected_device: "192.168.217.253",
         selected_group: "",
         list_group: [],
     }), methods: {
         letsExecute() { this.weExecuting = true },
-        async executeScriptDevice() {
+        executeScriptDevice() {
             try {
-                this.result = await axios.post(this.$store.getters.getIP + '/api/execute_script', { name: this.name, ip: this.selected_device })
-                this.output = this.result.data['output']
-
+                this.we_are_excuting = false
+                this.terminal_header = ""
+                this.directory.socket_arg = this.selected_device + "&&&&" + this.name;
+                this.directory.socket_message = "execute_script_device";
             } catch (error) {
                 console.log(error);
             }
-            window.scrollTo(0, 0)
+
         },
         async editScript() {
             try {

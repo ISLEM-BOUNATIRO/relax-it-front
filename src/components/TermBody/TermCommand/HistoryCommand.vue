@@ -31,7 +31,7 @@ if (commandStr === '') {
       <TermMessage v-if="isMessageShow " :type="type">{{ type }}
       </TermMessage>
       <span v-if="description && isMessageShow" class="whitespace-pre-line">
-        &thinsp; {{ description }}
+        {{ description }}
       </span>
       <TermWelcome v-if="commandStr.split(' ')[0] === 'welcome'" />
       <TermScript v-if="commandStr.split(' ')[0] === 'execute'" />

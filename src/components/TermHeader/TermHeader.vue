@@ -23,7 +23,7 @@ const foo = inject<() => void>(closeKey)
     </div>
     <div class="center-dir-title">
       <Icon icon="ant-design:folder-filled" class="text-[#57c5ff]" />
-      <span class="ml-2 select-none">{{ directory.socket_arg}}</span>
+      <span class="ml-2 select-none">{{ directory.socket_arg.split('&&&&')[0]}}</span>
     </div>
     <div class="circle-container"></div>
   </header>

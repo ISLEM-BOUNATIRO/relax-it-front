@@ -7,22 +7,20 @@ const socket = io('localhost:5000');
 const executing = () => {
   const commandStr = commandInput.value.trim()
   socket.emit(directory.socket_message, directory.socket_arg + "&&&&" + commandStr);
-  console.log("Protocole:  " + directory.socket_message)
-  console.log("ip:  " + directory.socket_arg)
-  console.log("command:  " + commandStr)
+
 }
 
 
 
 socket.on('message', function (msg: string) {
   const b = !directory.we_are_excuting
+  console.log(msg.includes("#"))
   if (msg.includes("#"))
-    console.log(typeof msg),
-      directory.addShowCommand({
-        commandStr: commandInput.value.trim(),
-        type: '',
-        description: msg
-      });
+    directory.addShowCommand({
+      commandStr: "sfsdf",
+      type: '',
+      description: msg
+    });
   else if (msg.includes("added") && b)
     directory.addShowCommand({
       commandStr: "a",
@@ -59,11 +57,13 @@ const commandInput = ref('')
 const termBody = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  socket.emit(directory.socket_message, directory.socket_arg + "&&&&disconnect");
-  //CLEAR
+  socket.emit("access_telnet", "192.168.217.253&&&&disconnect");
+
+
+  clear_all();
+
   if (!directory.we_are_excuting)
     socket.emit(directory.socket_message, directory.socket_arg);
-  clear_all();
 
   watch(directory.showCommands, async () => {
     await nextTick();
@@ -72,7 +72,7 @@ onMounted(() => {
   })
 })
 onUnmounted(() => {
-  socket.emit(directory.socket_message, directory.socket_arg + "&&&&disconnect");
+  socket.emit("access_telnet", "192.168.217.253&&&&disconnect");
   socket.disconnect()
 })
 let start = 0
