@@ -102,7 +102,7 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
                 <option v-for="group_select in list_group" :key="group_select.id" :value="group_select.name">
                     {{ group_select.name }}</option>
             </select>
-            <LargeButton class="m-4" buttonText="Group of devices">
+            <LargeButton @click="executeScriptGroup" class="m-4" buttonText="Group of devices">
             </LargeButton>
         </div>
     </div>
@@ -173,6 +173,17 @@ export default {
                 this.terminal_header = ""
                 this.directory.socket_arg = this.selected_device + "&&&&" + this.name;
                 this.directory.socket_message = "execute_script_device";
+            } catch (error) {
+                console.log(error);
+            }
+
+        },
+        executeScriptGroup() {
+            try {
+                this.we_are_excuting = false
+                this.terminal_header = ""
+                this.directory.socket_arg = this.selected_group + "&&&&" + this.name;
+                this.directory.socket_message = "execute_script_group";
             } catch (error) {
                 console.log(error);
             }

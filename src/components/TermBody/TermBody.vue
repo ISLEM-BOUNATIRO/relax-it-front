@@ -9,15 +9,12 @@ const executing = () => {
   socket.emit(directory.socket_message, directory.socket_arg + "&&&&" + commandStr);
 
 }
-
-
-
 socket.on('message', function (msg: string) {
   const b = !directory.we_are_excuting
   console.log(msg.includes("#"))
   if (msg.includes("#"))
     directory.addShowCommand({
-      commandStr: "sfsdf",
+      commandStr: commandInput.value.trim(),
       type: '',
       description: msg
     });
