@@ -85,20 +85,17 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
         </div>
     </div>
     <div v-else>
-        <div v-if="directory.socket_message!=''" class="flex items-center justify-center bg-gray-100 ">
-            <TermContainer class="mx-8 mt-8"></TermContainer>
-        </div>
-        <div v-else>
-            <LargeButton @click="executeScript" class="m-4" buttonText="One device">
-            </LargeButton>
-            <LargeButton class="m-4" buttonText="Group of devices">
-            </LargeButton>
-            <label class="block" for="content">Execution output</label>
-            <textarea disabled v-model="output" rows="8" type="text"
-                class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+
+        <LargeButton @click="executeScript" class="m-4" buttonText="One device">
+        </LargeButton>
+        <LargeButton class="m-4" buttonText="Group of devices">
+        </LargeButton>
+        <label class="block" for="content">Execution output</label>
+        <textarea disabled v-model="output" rows="8" type="text"
+            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                </textarea>
 
-        </div>
+
     </div>
     <ReturnButtonVue viewTitle="Manage Scripts" route="/ManageScripts" />
 </template>
@@ -107,6 +104,7 @@ axios.defaults.headers.common['ngrok-skip-browser-warning'] = 'any'
 export default {
     created: async function () {
         const route = useRoute()
+        this.directory.socket_message = ""
         this.output = ""
         const response = await axios.post(this.$store.getters.getIP + '/api/script', { "name": route.params.name }).catch(function (error) {
             if (error.response) {

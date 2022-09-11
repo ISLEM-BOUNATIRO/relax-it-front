@@ -58,6 +58,7 @@ const commandInput = ref('')
 const termBody = ref<HTMLElement | null>(null)
 
 onMounted(() => {
+  socket.emit(directory.socket_message, directory.socket_arg + "&&&&disconnect");
   //CLEAR
   if (!directory.we_are_excuting)
     socket.emit(directory.socket_message, directory.socket_arg);
@@ -70,7 +71,7 @@ onMounted(() => {
   })
 })
 onUnmounted(() => {
-  socket.emit(directory.socket_message, directory.socket_arg + "disconnect");
+  socket.emit(directory.socket_message, directory.socket_arg + "&&&&disconnect");
   socket.disconnect()
 })
 let start = 0
