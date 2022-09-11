@@ -35,11 +35,13 @@ export default {
         <h2 className='text-4xl font-bold text-center py-6'>RELAX-IT</h2>
         <div className='flex flex-col py-2'>
           <label>Username</label>
-          <input spellcheck="false" v-model="username" className='border p-2' type="text" />
+          <input spellcheck="false" @keydown.enter=redirectUser() v-model="username" className='border p-2'
+            type="text" />
         </div>
         <div className='flex flex-col py-2'>
           <label>Password</label>
-          <input spellcheck="false" v-model="password" className='border p-2' type="password" />
+          <input spellcheck="false" @keydown.enter=redirectUser() v-model="password" className='border p-2'
+            type="password" />
         </div>
 
         <button @click=redirectUser()
