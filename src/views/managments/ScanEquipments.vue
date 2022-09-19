@@ -15,7 +15,7 @@ const directory = useDirectoryStore()
             <option v-for="wilaya_select in list_wilaya" :key="wilaya_select.id" :value="wilaya_select.num">
                 {{ wilaya_select.name }}</option>
         </select>
-        <label class="block" for="name">Wilaya subnet(/16) : {{"192." + (this.wilaya + 64) + ".0.0"}}</label>
+        <label class="block" for="name">Wilaya subnet(/16) : {{"10." + (this.wilaya + 64) + ".0.0"}}</label>
 
 
 
@@ -36,8 +36,8 @@ const directory = useDirectoryStore()
 <script>
 export default {
     data: () => ({
-        wilaya_number: 16,
-        office_subnet: "192.168.217.0",
+        wilaya_number: 31,
+        office_subnet: "10.95.15.0",
         list_wilaya: [],
         wilaya: 0,
     }),
@@ -53,7 +53,7 @@ export default {
         scanWilaya() {
 
             this.directory.we_are_excuting = false
-            this.directory.socket_arg = "192." + (this.wilaya + 64) + ".0.0"
+            this.directory.socket_arg = "10." + (this.wilaya + 64) + ".0.0"
             //ORDER IS IMPORTANT  socket_message HAS TO BE LAST 
             if (this.wilaya != 0)
                 this.directory.socket_message = "scan_wilaya";

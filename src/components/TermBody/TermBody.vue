@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { io } from "socket.io-client";
+import storee from "@/store/index.js"
 const directory = useDirectoryStore()
 const isWelcomeShow = ref(true)
-const socket = io('localhost:5000');
+const socket = io(storee.getters.getIP);
 
 const executing = () => {
   const commandStr = commandInput.value.trim()
@@ -54,7 +55,7 @@ const commandInput = ref('')
 const termBody = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-  socket.emit("access_telnet", "192.168.217.253&&&&disconnect");
+  socket.emit("access_telnet", "10.95.15.253&&&&disconnect");
 
 
   clear_all();
