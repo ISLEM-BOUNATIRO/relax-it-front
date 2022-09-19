@@ -6,7 +6,7 @@ export default createStore(
             login: "not logged",
             view: "Main Menu",
             UserView: "User",
-            ipApi: 'http://127.0.0.1:5000',
+            ipApi: 'http://192.168.217.1:5000',
             we_are_excuting: false,
 
 
